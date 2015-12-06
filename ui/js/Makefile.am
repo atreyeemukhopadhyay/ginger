@@ -19,5 +19,6 @@ jsdir = $(datadir)/wok/plugins/ginger/ui/js
 
 dist_js_DATA = \
 	host-admin.js \
+	host-storage.js \
 	util.js \
 	$(NULL)

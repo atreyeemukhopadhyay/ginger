@@ -625,6 +625,34 @@
 .user-add-body .user-add-content .enable-combobox {
     vertical-align: middle;
 }
+.gridHeader{
+	text-align:left;
+}
+.bootgrid-table {
 
+  height:300px;
+  width:100%;
+
+  th > .column-header-anchor > .icon {
+      right:40%
+  }
+
+ thead{
+	display:block;
+	width:100%;
+  padding:0 1.7% 0 0;
+}
+ tbody {
+	height:250px;
+	overflow-y:scroll;
+	position:absolute;
+	width:100%;
+}
+
+ tr {
+	width:100% ;
+	display:inline-table;
+	}
+}
 // Admin - To do: move to Ginger
 @import "modules/administration";

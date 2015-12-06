@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+Copyright IBM Corp, 2015
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+-->
+#unicode UTF-8
+#import gettext
+#silent t = gettext.translation($lang.domain, $lang.localedir, languages=$lang.lang)
+#silent _ = t.gettext
+#silent _t = t.gettext
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="plugins/ginger/css/ginger.css">
+<script type="text/javascript" src="plugins/ginger/js/util.js"></script>
+<script type="text/javascript" src="plugins/ginger/js/host-storage.js"></script>
+</head>
+<body>
+  <div id="host-root-container" class="ginger">
+        <nav class="navbar navbar-default toolbar">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#toolbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="toolbar">
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="gingerHostAdmin" class="host-admin">
+          <!-- Volume Group Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("Volume Group")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- File Systems Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#file-systems-content-area" aria-expanded="false" aria-controls="file-systems-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("File Systems")</span>
+                  </a>
+              </h3>
+              <div id="file-systems-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-12'>
+                    <div class="row">
+                        <div id="file-systems-actions" class="col-md-6">
+                        </div>
+                        <div id="file-systems-add" class="col-md-6">
+                        </div>
+                    </div>
+                    <div class="row" id="file-systems">
+                    </div>
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- Swap Devices Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("Swap Devices")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- Storage device Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("Storage Devices")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- FCP tape device Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("FCP Tape Devices")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- SAN adapter Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("SAN Adapters")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+          <!-- iSCSI target Panel -->
+          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+              <h3>
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                      <span class="accordion-icon"></span><span class="accordion-text">$_("iSCSI Target")</span>
+                  </a>
+              </h3>
+              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-4'>
+
+                  </div>
+              </div>
+              <hr>
+          </div>
+        </div>
+    </div>
+  </div>
+<script>
+    ginger.initStorage();
+</script>
+</body>
+</html>
