@@ -38,7 +38,9 @@ ginger.initStorage = function(){
                       }
                   }];
 
-    var actionButton = [{
+
+
+        var actionButton = [{
             id:'sd-add-VG-button',
             class: 'fa fa-plus-circle',
             label: 'Add to VG',
@@ -93,47 +95,36 @@ ginger.initStorage = function(){
         opts['data']=JSON.stringify(result);
         gridFields = [
                       {
-                          "column-id":'use%',
-                          "type": 'string',
-                          "width":"10%",
-                          "title":"Use %"
+                        "column-id": 'filesystem',
+                        "type": 'string',
+                        "width":"20%",
+                        "title": "Name"
                       },
                      {
-                          "column-id": 'used',
-                          "type": 'string',
-                          "width":"10%",
-                          "title":"Used"
-                      },
-                      {
-                         "column-id": 'mounted_on',
-                         "type": 'string',
-                         "identifier":true,
-                         "width":"25%",
-                         "title":"Mount Point"
-                      },
-                      {
-                        "column-id": 'avail',
-                        "type": 'string',
-                        "width":"10%",
-                        "title":"Available"
-                      },
-                      {
-                        "column-id": 'filesystem',
-                          "type": 'string',
-                          "width":"20%",
-                          "title":"File System"
+                       "column-id": 'mounted_on',
+                       "type": 'string',
+                       "identifier":true,
+                       "width":"20%",
+                       "title": "Mount Point"
                       },
                       {
                         "column-id": 'type',
-                          "type": 'string',
-                          "width":"10%",
-                          "title":"Type"
+                        "type": 'string',
+                        "width":"10%",
+                        "title": "Type"
                       },
                       {
                         "column-id": 'size',
-                          "type": 'string',
-                          "width":"10%",
-                          "title":"Size"
+                        "type": 'string',
+                        "width":"10%",
+                        "title": "Size"
+                      },
+                      {
+                        "column-id": "use%",
+                        "type": 'string',
+                        "title": "Usage",
+                        "width":"35%",
+                        "formatter": "percentage-used"
                       }
                   ];
         opts['gridFields']=JSON.stringify(gridFields);
@@ -143,4 +134,81 @@ ginger.initStorage = function(){
     /*$("#addFCP").on("click",function(event){
      wok.window.open("plugins/gingers390x/network.html");
    });*/
+
+   ginger.getSwapdevices(function(result){
+     var gridFields = [];
+     var opts =[];
+     opts['id']='swap-devices';
+     opts['url'] = 'plugins/ginger/swaps';
+     opts['gridId']= "swapDevicesGrid";
+     for (i=0; i < result.length; i++){
+       //calculate usage % from size and used (both are in bytes)
+       result[i]['use_percent']= (parseInt(result[i]['used'])/parseInt(result[i]['size'])) * 100;
+       result[i]['use_percent'] = result[i]['use_percent'].toFixed(2) + "%";
+       // convert size in bytes to readable format
+       result[i]['size'] = wok.formatMeasurement(parseInt(result[i]['size']), {
+                     fixed: 2});
+       result[i]['size'] = result[i]['size'].toString();
+     }
+     opts['data']=JSON.stringify(result);
+     gridFields = [
+                   {
+                       "column-id":'filename',
+                       "type": 'string',
+                       "width":"20%",
+                       "title":'Name',
+                       "identifier":true
+                   },
+                  {
+                       "title": "Type",
+                       "column-id": 'type',
+                       "width":"15%",
+                       "type": 'string'
+                   },
+                   {
+                     "title": "Capacity",
+                     "column-id": "size",
+                     "width":"10%",
+                     "type": 'string'
+                   },
+                   {
+                     "title": "Usage",
+                     "column-id": "use_percent",
+                     "type": 'string',
+                     "width":"50%",
+                     "formatter": "percentage-used"
+                   }
+               ];
+     opts['gridFields']=JSON.stringify(gridFields);
+
+   ginger.createGrid(opts);
+ });
+
+ ginger.getVolumegroups(function(result){
+     var gridFields = [];
+     var opts =[];
+     opts['id']='volume-groups';
+     opts['url'] = 'plugins/ginger/vgs';
+     opts['gridId']= "volumeGroupsGrid";
+     opts['data']=JSON.stringify(result);
+     gridFields = [
+                     {
+                         "column-id": 'vgName',
+                         "type": 'string',
+                         "identifier":true,
+                         "width":"25%",
+                         "title": "Name"
+                     },
+                    {
+                      "column-id": 'vgSize',
+                      "type": 'string',
+                      "width":"70%",
+                      "title": "Capacity"
+                     }
+                 ];
+       opts['gridFields']=JSON.stringify(gridFields);
+
+     ginger.createGrid(opts);
+   });
+
 };

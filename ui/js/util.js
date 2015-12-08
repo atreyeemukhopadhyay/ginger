@@ -421,6 +421,31 @@ ginger.getFilesystems =  function(suc , err){
         }
     });
 }
+ginger.getSwapdevices =  function(suc , err){
+	wok.requestJSON({
+        url : 'plugins/ginger/swaps',
+        type : 'GET',
+        contentType : 'application/json',
+        dataType : 'json',
+        success : suc,
+        error : function(data) {
+            wok.message.error(data.responseJSON.reason);
+        }
+    });
+}
+
+ginger.getVolumegroups =  function(suc , err){
+	wok.requestJSON({
+        url : 'plugins/ginger/vgs',
+        type : 'GET',
+        contentType : 'application/json',
+        dataType : 'json',
+        success : suc,
+        error : function(data) {
+            wok.message.error(data.responseJSON.reason);
+        }
+    });
+}
 ginger.createGrid =  function(opts){
 	var containerId = opts['id'];
 	var url = opts['url'];
@@ -442,9 +467,10 @@ ginger.createGrid =  function(opts){
 		var columnHtml = [
                       '<th data-type="',fields[i]["type"],'" data-column-id="',fields[i]["column-id"],'"',
                        (fields[i].identifier)?'data-identifier="true"':'',' data-align="left" headerAlign="center"',
+                       ("formatter" in fields[i])?'data-formatter='+fields[i]["formatter"]:'',
                        (fields[i].width)?(' data-width="'+fields[i].width+'"'):'',
                        'data-header-css-class="gridHeader">',
-                      fields[i].title,
+                      ("title" in fields[i])?fields[i]["title"]:fields[i]["column-id"],
                       '</th>'
 		                  ].join('');
 		$(columnHtml).appendTo($('tr','#'+gridId));
@@ -459,7 +485,11 @@ ginger.createGrid =  function(opts){
         sorting:true,
         columnSelection:false,
         rowSelect:true,
-        css :{
+        formatters:{
+          "percentage-used" : function(column , row){
+          return '<div class="progress"><div class="progress-bar-info" style="width:'+row[column['id']]+'">'+row[column['id']]+'</div></div>';
+        }},
+        css:{
             iconDown : "fa fa-sort-desc",
             iconUp: "fa fa-sort-asc"
          },
