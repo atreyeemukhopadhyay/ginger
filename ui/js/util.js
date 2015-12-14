@@ -446,6 +446,32 @@ ginger.getVolumegroups =  function(suc , err){
         }
     });
 }
+ginger.getHostDetails = function (suc,err) {
+  wok.requestJSON({
+      url : 'plugins/gingerbase/host',
+      type : 'GET',
+      resend: true,
+      contentType : 'application/json',
+      dataType : 'json',
+      success : suc,
+      error: err
+  });
+}
+
+/**
+ * Get the host static information.
+ */
+ginger.getPlugins = function(suc, err) {
+    wok.requestJSON({
+        url : 'plugins',
+        type : 'GET',
+        resend: true,
+        contentType : 'application/json',
+        dataType : 'json',
+        success : suc,
+        error: err
+    });
+}
 ginger.createGrid =  function(opts){
 	var containerId = opts['id'];
 	var url = opts['url'];
@@ -488,7 +514,26 @@ ginger.createGrid =  function(opts){
         formatters:{
           "percentage-used" : function(column , row){
           return '<div class="progress"><div class="progress-bar-info" style="width:'+row[column['id']]+'">'+row[column['id']]+'</div></div>';
-        }},
+        },
+          "nw-interface-status": function(column, row)
+           {
+             var value = row[column.id];
+             if (column.id == "status") {
+               if (value == "up")
+                 return "<span class=\"nw-interface-status-enabled enabled\"> <i class=\"fa fa-power-off\"></i></span>";
+             return "<span class=\"nw-interface-status-disabled disabled\"> <i class=\"fa fa-power-off\"></i></span>";
+           }
+         },
+         "nw-address-space": function(column, row)
+          {
+            var ipaddr = row[column.id];
+            var netmask = row['netmask'];
+            if (!ipaddr) {
+              return "";
+            }
+            return ipaddr + "/" + netmask;
+        }
+       },
         css:{
             iconDown : "fa fa-sort-desc",
             iconUp: "fa fa-sort-asc"
@@ -496,23 +541,41 @@ ginger.createGrid =  function(opts){
          labels :{
            search : "Filter"
          }
-    }).on("selected.rs.jquery.bootgrid", function (e, rows) {
-        var rowIds = [];
-        for (var i = 0; i < rows.length; i++) {
-            rowIds.push(rows[i].id);
-        }
-    }).on("deselected.rs.jquery.bootgrid", function (e, rows) {
-        var rowIds = [];
-        for (var i = 0; i < rows.length; i++) {
-            rowIds.push(rows[i].id);
-        }
     }).on("load.rs.jquery.bootgrid", function (e) {
         $('.input-group .glyphicon-search').removeClass('.glyphicon-search').addClass('fa fa-search');
      });
 
 	grid.bootgrid("append",data);
 }
+ginger.getSelectedRowsData = function(opts){
+  var selectedRowDetails = [];
+  var currentRows = ginger.getCurrentRows(opts);
+  var selectedRowIds = ginger.getSelectedtRows(opts);
+  var identifier = opts['identifier'];
+  $.each(currentRows,function(i,row){
+    var rowDetails = row;
+    if(selectedRowIds.indexOf(rowDetails[identifier])!=-1){
+      selectedRowDetails.push(rowDetails);
+    }
+  });
+  return selectedRowDetails;
+};
 
+ginger.getCurrentRows =  function(opts){
+	return $('#'+opts['gridId']).bootgrid("getCurrentRows");
+}
+
+ginger.getSelectedtRows =  function(opts){
+	return $('#'+opts['gridId']).bootgrid("getSelectedRows");
+}
+
+ginger.getTotalRowCount =  function(opts){
+	return $('#'+opts['gridId']).bootgrid("getTotalRowCount");
+}
+
+ginger.reloadGridData =  function(opts){
+	return $('#'+opts['gridId']).bootgrid("reload");
+}
 ginger.createActionList = function(settings){
   var toolbarNode = null;
   var btnHTML, dropHTML = [];
@@ -542,4 +605,9 @@ ginger.createActionList = function(settings){
                     var btnNode = $(btnHTML).appendTo($('.dropdown-menu', toolbarNode));
                     button.onClick && btnNode.on('click', button.onClick);
                 });
+}
+ginger.changeButtonStatus = function(buttonIds, state){
+  $.each(buttonIds, function(i, buttonId) {
+     $('#'+buttonId).prop("disabled", state);
+  });
 }
