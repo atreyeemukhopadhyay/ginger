@@ -128,6 +128,10 @@ var actionButton = [{
          var opts = [];
          opts['gridId'] = "stgDevGrid";
          opts['identifier'] = "id";
+         var selectedRows = ginger.getSelectedRowsData(opts);
+         ginger.selectedrows = selectedRows;
+          wok.window.open('plugins/ginger/host-storage-format.html');
+
       }
   },
   {
@@ -303,19 +307,19 @@ ginger.loadStorageDeviceDetails = function(){
                        "column-id":'id',
                        "type": 'string',
                        "identifier":true,
-                       "width":"10%",
+                       "width":"50%",
                        "title":"ID"
                    },
                   {
                        "column-id": 'mpath_count',
                        "type": 'number',
-                       "width":"10%",
+                       "width":"20%",
                        "title":"Multipath Count"
                    },
                    {
                      "column-id": 'type',
                        "type": 'string',
-                       "width":"10%",
+                       "width":"15%",
                        "title":"Type"
                    },
                    {
@@ -332,4 +336,12 @@ ginger.loadStorageDeviceDetails = function(){
          ginger.getStgdevs(function(result){
            ginger.loadBootgridData("stgDevGrid",result);
          });
+}
+ginger.formatStorageDevice= function(){
+  $('#storage-format').on("click",function(){
+    var fileSysTypeSelected = $('input[name=fsSelection]:checked').val();
+    alert("fileSysTypeSelected "+fileSysTypeSelected);
+    var mydata = JSON.stringify(ginger.selectedrows);
+     alert(mydata);
+  });
 }
