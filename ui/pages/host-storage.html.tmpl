@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 <link rel="stylesheet" type="text/css" href="plugins/ginger/css/ginger.css">
 <script type="text/javascript" src="plugins/ginger/js/util.js"></script>
 <script type="text/javascript" src="plugins/ginger/js/host-storage.js"></script>
+<script type="text/javascript" src="plugins/ginger/js/ginger-bootgrid.js"></script>
 </head>
 <body>
   <div id="host-root-container" class="ginger">
@@ -69,12 +70,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
               </h3>
               <div id="file-systems-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class='fmw-content col-md-12'>
-                    <div class="row"  style="padding-left:50px;">
-                        <div id="file-systems-actions" class="pull-left">
-                        </div>
-                        <div id="file-systems-add" class="pull-right">
-                        </div>
-                    </div>
                     <div class="row" id="file-systems" style="padding-left:20px;">
                     </div>
                   </div>
@@ -98,13 +93,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
           <!-- Storage device Panel -->
           <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
               <h3>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#storage-device-content-area" aria-expanded="false" aria-controls="storage-device-content-area" class="">
                       <span class="accordion-icon"></span><span class="accordion-text">$_("Storage Devices")</span>
                   </a>
               </h3>
-              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class='fmw-content col-md-4'>
-
+              <div id="storage-device-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class='fmw-content col-md-12'>
+                    <div class="row"  style="padding-left:50px;">
+                        <div id="file-systems-actions" class="pull-left">
+                        </div>
+                        <div id="file-systems-add" class="pull-right">
+                        </div>
+                    </div>
+                     <div class="row" id="stg-devs"  style="padding-left:20px;">
+                    </div>
                   </div>
               </div>
               <hr>

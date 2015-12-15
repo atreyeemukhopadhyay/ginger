@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Copyright IBM Corp, 2015
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+-->
+#unicode UTF-8
+#import gettext
+#silent t = gettext.translation($lang.domain, $lang.localedir, languages=$lang.lang)
+#silent _ = t.gettext
+#silent _t = t.gettext
+<!-- <html>
+<head>
+<link rel="stylesheet" type="text/css" href="plugins/ginger/css/ginger.css">
+<script type="text/javascript" src="plugins/ginger/js/util.js"></script>
+<script type="text/javascript" src="plugins/ginger/js/host-storage.js"></script>
+</head>
+<body> -->
+<div id="ginger-storage-format-container" class="ginger">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">$_("Format a Storage Device")</h4>
+      </div>
+      <div class="modal-body" id = "format-modal-body">
+        <input type="hidden" id="myid" name="interfaceName" />
+        <!-- <div id = 'myid'> </div> -->
+        <!-- <input type="hidden" id="format-dev-name" name="templateName" /> -->
+      <div class="form-group">
+        <div id ='selectedFormatDevices'></div>
+          <label>$_("Choose a File System")</label>
+          <div id="format-radio-buttons">
+              <label class="radio-inline">
+                  <input type="radio" name="fsSelection" class="wok-radio" id="ext3" value="ext3"/>
+                  <label for="ext3">$_("ext3")</label>
+              </label>
+              <label class="radio-inline">
+                   <input type="radio" name="fsSelection" class="wok-radio" id="ext4" value="ext4"/>
+                  <label for="ext4">$_("ext4")</label>
+              </label>
+              <label class="radio-inline">
+                  <input type="radio" name="fsSelection" class="wok-radio" id="xfs" value="xfs" />
+                  <label for="xfs">$_("xfs")</label>
+              </label>
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" id="user-submit" class="btn btn-default" data-dismiss="modal" disabled>$_("Format")</button>
+      <button type="button" id="user-cancel" class="btn btn-default" data-dismiss="modal">$_("Cancel")</button>
+    </div>
+    <div id="rajat">Gupta</div>
+    </div>
+</div>
+<div id="modalWindow"></div>
+<script type="text/javascript">
+    // ginger.getStgdevs(function(result){
+        var opts = []
+        opts['gridId'] = "stgDevGrid"
+        opts['identifier'] = "id"
+        // alert(ginger.abc)
+        // $("#myid").val("anc");
+      //  var selectedRowData = ginger.getSelectedRowsData(opts);
+        //alert($('#ginger-storage-format-container'));
+               //$('#selectedFormatDevices').text("H");
+        // $('#myid').text("ABCD");
+// $("#myid").text("Running");
+        var mydata = JSON.stringify(ginger.getSelectedRowsData(opts));
+         console.log(mydata);
+         alert(mydata);
+         $("#rajat").html(mydata);
+         console.log($("#rajat"));
+//          $('#myid').text(ginger.getSelectedRowsData(opts));
+    // });
+</script>
+<!-- </body>
+</html> -->
