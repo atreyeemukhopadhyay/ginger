@@ -17,7 +17,7 @@
  */
 
 ginger = {};
-
+ginger.hostarch = null
 ginger.getFirmware = function(suc, err){
     wok.requestJSON({
         url : 'plugins/ginger/firmware',
@@ -459,7 +459,7 @@ ginger.getHostDetails = function (suc,err) {
 }
 
 /**
- * Get the host static information.
+ * Get list of installed plugins
  */
 ginger.getPlugins = function(suc, err) {
     wok.requestJSON({
@@ -476,6 +476,19 @@ ginger.getPlugins = function(suc, err) {
 ginger.getStgdevs =  function(suc , err){
     wok.requestJSON({
         url : 'plugins/ginger/stgdevs',
+        type : 'GET',
+        contentType : 'application/json',
+        dataType : 'json',
+        success : suc,
+        error : function(data) {
+            wok.message.error(data.responseJSON.reason);
+        }
+    });
+}
+
+ginger.getFcpTapeDevices =  function(suc , err){
+    wok.requestJSON({
+        url : 'plugins/gingers390x/lstapes',
         type : 'GET',
         contentType : 'application/json',
         dataType : 'json',

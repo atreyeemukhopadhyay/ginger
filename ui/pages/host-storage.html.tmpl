@@ -56,7 +56,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
               </h3>
               <div id="volume-groups-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class='fmw-content col-md-12'>
-                    <div class="row" id="volume-groups"></div>
+                    <div class="row" id="volume-groups" style="padding-left:20px;"></div>
                   </div>
               </div>
               <hr>
@@ -85,7 +85,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
               </h3>
               <div id="swap-devices-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class='fmw-content col-md-12'>
-                    <div class="row" id="swap-devices"></div>
+                    <div class="row" id="swap-devices" style="padding-left:20px;"></div>
                   </div>
               </div>
               <hr>
@@ -112,44 +112,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
               <hr>
           </div>
           <!-- FCP tape device Panel -->
-          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
+          <div id="fcp-tape-devices-panel" class="panel-group firmware-ppc-enabled hidden" id="accordion" role="tablist" aria-multiselectable="true">
               <h3>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#fcp-tape-devices-content-area" aria-expanded="false" aria-controls="fcp-tape-devices-content-area" class="">
                       <span class="accordion-icon"></span><span class="accordion-text">$_("FCP Tape Devices")</span>
                   </a>
               </h3>
-              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class='fmw-content col-md-4'>
-
-                  </div>
+              <div id="fcp-tape-devices-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class='fmw-content col-md-12'>
+                  <div class="row" id="fcp-tape-devices" style="padding-left:20px;"></div>
+                </div>
               </div>
               <hr>
           </div>
           <!-- SAN adapter Panel -->
           <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
               <h3>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#san-adapter-content-area" aria-expanded="false" aria-controls="san-adapter-content-area" class="">
                       <span class="accordion-icon"></span><span class="accordion-text">$_("SAN Adapters")</span>
                   </a>
               </h3>
-              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class='fmw-content col-md-4'>
-
+              <div id="san-adapter-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class='fmw-content col-md-12'>
+                  <div class="row"  style="padding-left:50px;">
+                      <div id="san-adapter-add" class="pull-right">
+                      </div>
                   </div>
-              </div>
-              <hr>
-          </div>
-          <!-- iSCSI target Panel -->
-          <div class="panel-group firmware-ppc-enabled" id="accordion" role="tablist" aria-multiselectable="true">
-              <h3>
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#firmware-update-content-area" aria-expanded="false" aria-controls="firmware-update-content-area" class="">
-                      <span class="accordion-icon"></span><span class="accordion-text">$_("iSCSI Target")</span>
-                  </a>
-              </h3>
-              <div id="firmware-update-content-area" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class='fmw-content col-md-4'>
-
-                  </div>
+                  <div class="row" id="san-adapter-list" style="padding-left:20px;"></div>
+                </div>
               </div>
               <hr>
           </div>
